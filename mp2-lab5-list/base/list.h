@@ -201,7 +201,7 @@ public:
   void insert_in_pos(const TType& elem, const int pos) // Вставка элемента на позицию
   {
     if (pos < 0 || pos > size)
-        throw std::string("TList::insert_in_pos(TType, int) throw an exception");
+      throw std::string("TList::insert_in_pos(TType, int) throw an exception");
     if (is_empty())
     {
       insert_first(elem);
