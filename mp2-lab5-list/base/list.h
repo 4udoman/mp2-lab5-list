@@ -257,9 +257,16 @@ public:
         break;
       prev = tmp;
     }
-    Node* NewNode = new Node(elem, prev->pNext);
-    prev->pNext = NewNode;
-    size++;
+    if (prev != pLast)
+    {
+      Node* NewNode = new Node(elem, prev->pNext);
+      prev->pNext = NewNode;
+      size++;
+    }
+    else
+    {
+      insert_last(elem);
+    }
   }
 
   TType& operator[](const int ind) // Оператор индексации
