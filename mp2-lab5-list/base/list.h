@@ -201,7 +201,7 @@ public:
   void insert_in_pos(const TType& elem, const int pos) // Вставка элемента на позицию
   {
     if (pos < 0 || pos > size)
-        throw std::string("TList::insert_in_pos(TType, int) throw an exception");
+      throw std::string("TList::insert_in_pos(TType, int) throw an exception");
     if (is_empty())
     {
       insert_first(elem);
@@ -257,9 +257,16 @@ public:
         break;
       prev = tmp;
     }
-    Node* NewNode = new Node(elem, prev->pNext);
-    prev->pNext = NewNode;
-    size++;
+    if (prev != pLast)
+    {
+      Node* NewNode = new Node(elem, prev->pNext);
+      prev->pNext = NewNode;
+      size++;
+    }
+    else
+    {
+      insert_last(elem);
+    }
   }
 
   TType& operator[](const int ind) // Оператор индексации
